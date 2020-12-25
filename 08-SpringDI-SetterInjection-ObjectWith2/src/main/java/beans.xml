@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- bean definitions here -->
+
+	<!-- <bean id="bankingServiceDomestic" class="com.cybertek.implementation.BankingServiceDomestic"></bean> -->
+	<!-- <bean id="bankingServiceInternational" class="com.cybertek.implementation.BankingServiceInternational"></bean> 
+		scope="prototype" -->
+
+
+	<bean id="bankingService" 
+		class="com.cybertek.implementation.BankingServiceDomestic">
+		<property name="repo" ref="accountRepository">
+
+
+
+		</property>
+
+
+
+	</bean>
+
+
+	<bean id="bankingServiceInt" 
+		class="com.cybertek.implementation.BankingServiceInternational">
+		<property name="repo" ref="accountRepository">
+
+
+
+		</property>
+
+
+
+	</bean>
+
+	<bean id="accountRepository"
+		class="com.cybertek.repo.AccountRepository">
+		<constructor-arg name="accountId" value="987456" />
+		<constructor-arg name="accountName" value="Mehmet" />
+
+	</bean>
+
+
+
+</beans>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- bean definitions here -->
+
+	<!-- <bean id="bankingServiceDomestic" class="com.cybertek.implementation.BankingServiceDomestic"></bean> -->
+	<!-- <bean id="bankingServiceInternational" class="com.cybertek.implementation.BankingServiceInternational"></bean> 
+		scope="prototype" -->
+
+
+    <context:annotation-config /> 
+	<context:property-placeholder
+		location="classpath:application.properties" />
+
+	<bean id="bankingService"
+		class="com.cybertek.implementation.BankingServiceDomestic">
+		<constructor-arg name="repo" ref="accountRepository" />
+	</bean>
+
+
+	<bean id="bankingServiceInt"
+		class="com.cybertek.implementation.BankingServiceInternational">
+		<constructor-arg name="repo" ref="accountRepository" />
+	</bean>
+
+	<bean id="accountRepository"
+		class="com.cybertek.repo.AccountRepository">
+	</bean>
+
+
+
+</beans>
